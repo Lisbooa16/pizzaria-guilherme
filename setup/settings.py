@@ -133,4 +133,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 if "DATABASE_URL" in os.environ:
     import dj_database_url
-    DATABASE = {'default': dj_database_url.config()}
+    DATABASE = {'default': dj_database_url.config(default='postgres://foo:bar@localhost:5432/db'))}
