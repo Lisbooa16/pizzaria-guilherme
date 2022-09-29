@@ -9,3 +9,7 @@ class prato(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class auth_user(models.Model):
+    pass
