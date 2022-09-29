@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,4 +135,5 @@ if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASE = {'default': dj_database_url.config()}
 
+django_heroku.settings(locals())
      
