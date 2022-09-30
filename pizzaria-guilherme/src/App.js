@@ -1,14 +1,18 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Prato from './componentes/Prato';
 
 function App() {
 
+  const [pratos, setPratos] = useState([])
+
+
   useEffect(() => {
-    fetch('https://pizzariagui.herokuapp.com/api/pratos/')
+    fetch('https://alura-pizza.herokuapp.com/api/pratos/')
       .then(resposta => resposta.json())
       .then(dados => {
-        console.log(dados)
+        setPratos(dados)
       })
   }, [])
 
@@ -21,6 +25,16 @@ function App() {
       <div className='logo-container'>
         <img src="imagens/logo.png" alt="Logo da Pizzaria gui" />
       </div>
+      <section className='cardapio'>
+        {pratos.map(prato => 
+        (<Prato 
+          key={prato.id} 
+          nome={prato.nome} 
+          descricao={prato.descricao} 
+          imagem={prato.imagem} 
+          preco={prato.preco}
+        />))}
+      </section>
     </div>
   );
 }

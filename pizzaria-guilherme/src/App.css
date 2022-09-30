@@ -16,3 +16,9 @@ html {
 .logo-container{
   text-align: center;
 }
+
+.cardapio{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
