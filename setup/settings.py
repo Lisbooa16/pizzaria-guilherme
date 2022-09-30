@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from corsheaders.defaults import default_headers
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,8 +28,10 @@ SECRET_KEY = "django-insecure-k824$g#=k_zszcbqxpxz-5l+=fa0-_ounm-$7#!8((7oqh4nfw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'pizzariagui.herokuapp.com']
+# ALLOWED_HOSTS = ['127.0.0.1', 'pizzariagui.herokuapp.com']
+ALLOWED_HOSTS=['*']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -41,7 +44,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "restaurante",
     "rest_framework",
+    "corsheaders",
 ]
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -51,6 +57,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "setup.urls"
@@ -114,6 +123,19 @@ TIME_ZONE = "America/Sao_Paulo"
 USE_I18N = True
 
 USE_TZ = True
+
+
+CORS_ORIGIN_WHITELIST = (
+    "http://127.0.0.1:5500",
+)
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Origin',
+)
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 
 # Static files (CSS, JavaScript, Images)
