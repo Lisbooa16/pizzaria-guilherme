@@ -174,3 +174,12 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+
+### Project ###
+# Frontend dependencies
+node_modules/
+# collectstatic output
+staticfiles/
+# Editors
+.vscode/
+.idea/
